@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David &amp; Precious | Our Wedding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Cormorant+Garamond:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon:#6d1327;
+    --maroon-deep:#4c0d1b;
+    --gold:#c9a227;
+    --gold-light:#e6cf7a;
+    --cream:#fbf7f1;
+    --white:#ffffff;
+    --ink:#2a1013;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Lato', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+  }
+  h1,h2,h3,.script{font-family:'Playfair Display', serif;}
+  .verse-title{font-family:'Cormorant Garamond', serif;}
+
+  /* ---- NAV ---- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--maroon);
+    display:flex; justify-content:center; gap:clamp(10px,3vw,32px);
+    padding:14px 10px; flex-wrap:wrap;
+  }
+  nav a{
+    color:var(--gold-light); text-decoration:none;
+    font-size:0.85rem; letter-spacing:1px; text-transform:uppercase;
+    font-weight:700; opacity:0.9; transition:opacity .2s;
+  }
+  nav a:hover{opacity:1; color:var(--white);}
+
+  /* ---- HERO ---- */
+  .hero{
+    background:
+      linear-gradient(180deg, rgba(76,13,27,0.55), rgba(76,13,27,0.85)),
+      var(--maroon);
+    color:var(--white);
+    text-align:center;
+    padding:70px 20px 60px;
+    position:relative;
+  }
+  .photo-frame{
+    width:220px; height:220px; border-radius:50%;
+    border:4px solid var(--gold);
+    margin:0 auto 26px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,0.08);
+    color:var(--gold-light);
+    font-size:0.8rem; text-align:center; padding:10px;
+    letter-spacing:1px;
+  }
+  .hero h1{
+    font-size:clamp(1.9rem, 5vw, 3rem);
+    font-weight:700;
+  }
+  .hero .heart{color:var(--gold); padding:0 10px;}
+  .hero .venue{
+    margin-top:24px; font-size:1rem; opacity:0.95;
+  }
+  .hero .venue p{margin:3px 0;}
+  .hero .date{
+    margin-top:18px;
+    letter-spacing:4px;
+    font-weight:700;
+    color:var(--gold-light);
+    font-size:1.05rem;
+  }
+  .ornament{
+    width:70px; height:1px; background:var(--gold);
+    margin:22px auto; position:relative;
+  }
+  .ornament::before{
+    content:"❖"; color:var(--gold); position:absolute;
+    left:50%; top:50%; transform:translate(-50%,-50%);
+    background:var(--maroon); padding:0 10px; font-size:0.9rem;
+  }
+
+  /* ---- SECTIONS ---- */
+  section{
+    max-width:820px; margin:0 auto;
+    padding:60px 24px;
+  }
+  section h2{
+    color:var(--maroon);
+    font-size:clamp(1.4rem,3.5vw,1.9rem);
+    text-align:center;
+    margin-bottom:8px;
+  }
+  section .subhead{
+    text-align:center; color:#8a6b46; font-size:0.85rem;
+    letter-spacing:2px; text-transform:uppercase; margin-bottom:34px;
+  }
+  .card{
+    background:var(--white);
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(109,19,39,0.08);
+    padding:30px clamp(18px,4vw,40px);
+  }
+
+  /* ---- PROGRAM ---- */
+  .program-grid{display:grid; grid-template-columns:1fr; gap:36px;}
+  @media(min-width:700px){ .program-grid{grid-template-columns:1fr 1fr;} }
+  .program-grid h3{
+    color:var(--maroon); font-size:1.1rem; letter-spacing:1px;
+    text-transform:uppercase; margin-bottom:16px;
+    border-bottom:2px solid var(--gold-light); padding-bottom:8px;
+  }
+  ol.plain, ul.plain{list-style:none;}
+  .program-grid ol li, .program-grid ul li{
+    padding:9px 0; border-bottom:1px dashed #eadfce;
+    font-size:0.98rem;
+  }
+  .program-grid ol{counter-reset:item;}
+  .program-grid ol li{counter-increment:item;}
+  .program-grid ol li::before{
+    content: counter(item) ". ";
+    color:var(--gold); font-weight:700; margin-right:4px;
+  }
+  .photo-order .subitem{padding-left:20px; font-style:italic; color:#7a5b2e; border-bottom:none; padding-top:14px; padding-bottom:4px;}
+
+  /* ---- SONGS ---- */
+  .song{margin-bottom:38px;}
+  .song:last-child{margin-bottom:0;}
+  .song h3{
+    color:var(--maroon); font-size:1.25rem; margin-bottom:2px;
+  }
+  .song .subtitle{
+    font-style:italic; color:#7a5b2e; margin-bottom:4px;
+  }
+  .song a{color:var(--maroon); font-size:0.85rem;}
+  .verse{margin-top:16px;}
+  .verse p{margin:2px 0;}
+  .chorus{
+    margin-top:10px; padding:12px 16px;
+    background:var(--cream); border-left:3px solid var(--gold);
+    font-style:italic;
+  }
+
+  /* ---- APPRECIATION ---- */
+  .appreciation{
+    background:linear-gradient(160deg, var(--maroon), var(--maroon-deep));
+    color:var(--white); border-radius:14px;
+    padding:44px clamp(20px,5vw,56px); text-align:center;
+  }
+  .appreciation .photo-frame{
+    width:150px; height:150px; margin-bottom:22px;
+  }
+  .appreciation p.msg{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.3rem; line-height:1.7; max-width:620px; margin:0 auto;
+  }
+  .appreciation .signature{
+    margin-top:22px; color:var(--gold-light); font-family:'Playfair Display',serif;
+    font-size:1.2rem;
+  }
+
+  /* ---- DONATIONS ---- */
+  .tabs{display:flex; justify-content:center; gap:10px; margin-bottom:26px; flex-wrap:wrap;}
+  .tab-btn{
+    border:1.5px solid var(--maroon); background:var(--white); color:var(--maroon);
+    padding:10px 22px; border-radius:30px; cursor:pointer;
+    font-weight:700; font-size:0.85rem; letter-spacing:0.5px;
+    transition:all .2s;
+  }
+  .tab-btn.active, .tab-btn:hover{background:var(--maroon); color:var(--white);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block; animation:fade .3s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+  .detail-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 0; border-bottom:1px solid #f0e6d6; gap:10px;
+  }
+  .detail-row:last-child{border-bottom:none;}
+  .detail-row .label{color:#8a6b46; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px;}
+  .detail-row .value{font-weight:700; color:var(--ink); word-break:break-all; font-size:0.95rem;}
+  .copy-btn{
+    background:var(--gold); color:var(--maroon-deep); border:none;
+    padding:8px 14px; border-radius:8px; font-weight:700; font-size:0.78rem;
+    cursor:pointer; white-space:nowrap; flex-shrink:0;
+  }
+  .copy-btn:hover{background:var(--gold-light);}
+  .note{
+    margin-top:18px; font-size:0.82rem; color:#8a6b46; text-align:center;
+  }
+
+  footer{
+    text-align:center; padding:40px 20px; color:#8a6b46; font-size:0.85rem;
+  }
+  footer .heart{color:var(--maroon);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#program">Program</a>
+  <a href="#songs">Songs</a>
+  <a href="#appreciation">Thank You</a>
+  <a href="#donate">Give a Gift</a>
+</nav>
+
+<header class="hero" id="home">
+  <div class="photo-frame">COUPLE PHOTO<br>PLACEHOLDER</div>
+  <h1>David Mbre <span class="heart">&#10084;</span> Precious Nyah</h1>
+  <div class="ornament"></div>
+  <div class="venue">
+    <p>@ Kingdom Hall of Jehovah's Witnesses</p>
+    <p>#11 Uruan Street, Ewet Offot</p>
+    <p>Uyo, Akwa Ibom State</p>
+  </div>
+  <div class="date">AUGUST &nbsp;·&nbsp; 29 &nbsp;·&nbsp; 2026</div>
+</header>
+
+<section id="program">
+  <h2>Wedding Program</h2>
+  <p class="subhead">Order of Service</p>
+  <div class="card program-grid">
+    <div>
+      <h3>Kingdom Hall Program</h3>
+      <ol class="plain">
+        <li>Musical Interlude</li>
+        <li>Opening Song: Song 131</li>
+        <li>Opening Prayer</li>
+        <li>Marriage Discourse</li>
+        <li>Announcements</li>
+        <li>Closing Song: Song 132</li>
+        <li>Closing Prayer</li>
+      </ol>
+    </div>
+    <div class="photo-order">
+      <h3>Order of Photograph</h3>
+      <ol class="plain">
+        <li>Groom Alone</li>
+        <li>Bride Alone</li>
+        <li>Couple Alone</li>
+      </ol>
+      <p class="subitem">Couple With:</p>
+      <ol class="plain" start="4">
+        <li>Officiating Minister and Wife</li>
+        <li>Bride's Parents</li>
+        <li>Bride's Family</li>
+        <li>Groom's Parents</li>
+        <li>Groom's Family</li>
+        <li>Both Families</li>
+        <li>Eniong Offot / Technical Congregation</li>
+        <li>LDC / All Full-time Servants</li>
+        <li>Uniuyo Alumni / Alumna</li>
+        <li>Couple with Angels Academy</li>
+        <li>Friends and Well-wishers</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="songs">
+  <h2>Our Wedding Songs</h2>
+  <p class="subhead">Sung During the Ceremony</p>
+  <div class="card">
+    <div class="song">
+      <h3>Opening Song 131</h3>
+      <p class="subtitle">"What God Has Yoked Together"</p>
+      <a href="https://wol.jw.org/en/wol/bc/r1/lp-e/1102016931/0/0" target="_blank" rel="noopener">Matthew 19:5, 6</a>
+      <div class="verse verse-title">
+        <p>1. With dignity and joy,</p>
+        <p>A threefold cord is bound.</p>
+        <p>With God and men to witness,</p>
+        <p>These sacred vows resound.</p>
+      </div>
+      <div class="chorus verse-title">
+        <p>He vowed before Jehovah</p>
+        <p>To love her from the heart.</p>
+        <p>"What God has yoked together,</p>
+        <p>Let no man put apart."</p>
+      </div>
+      <div class="verse verse-title">
+        <p>2. They both have searched God's Word</p>
+        <p>To learn to do his will,</p>
+        <p>And now they seek his blessing,</p>
+        <p>Their promise to fulfill.</p>
+      </div>
+      <div class="chorus verse-title">
+        <p>She vowed before Jehovah</p>
+        <p>To love him from the heart.</p>
+        <p>"What God has yoked together,</p>
+        <p>Let no man put apart."</p>
+      </div>
+    </div>
+
+    <div class="song">
+      <h3>Closing Song 132</h3>
+      <p class="subtitle">"Now We Are One"</p>
+      <a href="https://wol.jw.org/en/wol/bc/r1/lp-e/1102016932/0/0" target="_blank" rel="noopener">Genesis 2:23, 24</a>
+      <div class="verse verse-title">
+        <p>This is at last bone of my bone,</p>
+        <p>Flesh of my flesh; now I'm not alone.</p>
+        <p>God has provided a partner,</p>
+        <p>Someone to call my own.</p>
+        <p>Now we are one; now there can be</p>
+        <p>Blessings to share for you and for me.</p>
+        <p>As man and woman together,</p>
+        <p>We are a family.</p>
+        <p>Ev'ry day we'll serve our God above.</p>
+        <p>As he shows the way,</p>
+        <p>Unfailing love we'll display.</p>
+        <p>As we have vowed, so may it be.</p>
+        <p>Seasons of joy, may we come to see.</p>
+        <p>Oh, may we honor Jehovah,</p>
+        <p>And may you always be my love.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="appreciation">
+  <h2>With Gratitude</h2>
+  <p class="subhead">A Note From David &amp; Precious</p>
+  <div class="appreciation">
+    <div class="photo-frame">COUPLE PHOTO<br>PLACEHOLDER</div>
+    <p class="msg">"To our families, friends, and well-wishers,</p>
+    <p class="msg" style="margin-top:16px;">From the bottom of our hearts, thank you for surrounding us with love, prayers, and support as we begin this new chapter together. Your presence, gifts, and well wishes mean more to us than words can say. We are deeply grateful to Jehovah for the gift of each other, and to each of you for making our special day even more memorable."</p>
+    <p class="signature">With love and heartfelt appreciation,<br>David &amp; Precious</p>
+  </div>
+</section>
+
+<section id="donate">
+  <h2>Give a Gift</h2>
+  <p class="subhead">If You Wish to Bless Us With a Gift</p>
+  <div class="card">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="bank">Bank Transfer</button>
+      <button class="tab-btn" data-tab="opay">Opay</button>
+      <button class="tab-btn" data-tab="crypto">Crypto</button>
+    </div>
+
+    <div class="tab-panel active" id="bank">
+      <div class="detail-row">
+        <div><div class="label">Bank Name</div><div class="value">First Bank of Nigeria</div></div>
+        <button class="copy-btn" data-copy="First Bank of Nigeria">Copy</button>
+      </div>
+      <div class="detail-row">
+        <div><div class="label">Account Name</div><div class="value">David Edet Mbre</div></div>
+        <button class="copy-btn" data-copy="David Edet Mbre">Copy</button>
+      </div>
+      <div class="detail-row">
+        <div><div class="label">Account Number</div><div class="value">3094626044</div></div>
+        <button class="copy-btn" data-copy="3094626044">Copy</button>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="opay">
+      <div class="detail-row">
+        <div><div class="label">Account Name</div><div class="value">David Edet Mbre</div></div>
+        <button class="copy-btn" data-copy="David Edet Mbre">Copy</button>
+      </div>
+      <div class="detail-row">
+        <div><div class="label">Opay Number</div><div class="value">8068802836</div></div>
+        <button class="copy-btn" data-copy="8068802836">Copy</button>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="crypto">
+      <div class="detail-row">
+        <div><div class="label">Accepted Networks</div><div class="value" id="crypto-network">EVM-compatible address only</div></div>
+      </div>
+      <div class="detail-row">
+        <div><div class="label">Wallet Address</div><div class="value">0x4BDFCA0F5308ad1Ea598089afCB9328786189265</div></div>
+        <button class="copy-btn" data-copy="0x4BDFCA0F5308ad1Ea598089afCB9328786189265">Copy</button>
+      </div>
+      <p class="note">⚠ This is an EVM-compatible address only (e.g. Ethereum, BNB Smart Chain, Polygon). Please do <strong>not</strong> send TRC-20 (Tron) assets here.</p>
+    </div>
+
+    <p class="note">Your presence at our wedding is the greatest gift of all — anything further is simply appreciated, never expected.</p>
+  </div>
+</section>
+
+<footer>
+  Made with <span class="heart">&#10084;</span> for David &amp; Precious &nbsp;·&nbsp; August 29, 2026
+</footer>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.copy-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const text = btn.dataset.copy;
+      navigator.clipboard.writeText(text).then(()=>{
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(()=>{ btn.textContent = original; }, 1500);
+      }).catch(()=>{
+        alert('Copy this: ' + text);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
